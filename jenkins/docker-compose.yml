@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  jenkins:
+    build:
+      context: .
+      args:
+        DOCKER_GID: 65536
+    image: jenkins
+    container_name: jenkins
+    environment:
+      TZ: "Asia/Seoul"
+      DOCKER_GID: 65536
+      JAVA_OPTS: "-Dhudson.model.DownloadService.noSignatureCheck=true"
+
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+    volumes:
+      - /volume1/docker/jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock

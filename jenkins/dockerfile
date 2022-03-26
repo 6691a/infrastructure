@@ -1,0 +1,18 @@
+FROM jenkins/jenkins:latest
+
+ARG DOCKER_GID=65536
+ARG CONTAINER_NAME=jenkins
+
+USER root
+
+
+# docker install
+COPY sh/docker_install.sh /docker_install.sh
+RUN chmod +x /docker_install.sh && \
+    /docker_install.sh
+
+# set jenkins user to host docker group
+RUN groupadd -g ${DOCKER_GID} -f docker && \
+    usermod -aG docker jenkins
+
+USER jenkins
