@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  registry:
+    build:
+      context: .
+    image: registry:2
+    container_name: registry
+    environment:
+      REGISTRY_AUTH: "htpasswd"
+      REGISTRY_AUTH_HTPASSWD_REALM: "Registry Realm"
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    restart: unless-stopped
+    ports:
+      - 5555:5000
+    volumes:
+      - /volume1/docker/hub/registry:/var/lib/registry
+      - /volume1/docker/hub/auth:/auth
