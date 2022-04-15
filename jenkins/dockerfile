@@ -5,6 +5,10 @@ ARG CONTAINER_NAME=jenkins
 
 USER root
 
+RUN apt update
+# ggshield install
+RUN apt install python3-pip
+RUN pip install -U ggshield
 
 # docker install
 COPY sh/docker_install.sh /docker_install.sh
