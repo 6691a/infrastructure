@@ -4,7 +4,7 @@ run:
 	export CONTAINER_NAME=$(SERVICE);
 	docker-compose up -d --envfile .env
 	
-stop:
+stop:	
 	docker-compose down
 
 log:

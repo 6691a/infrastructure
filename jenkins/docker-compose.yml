@@ -7,7 +7,7 @@ services:
       args:
         DOCKER_GID: 65536
     image: jenkins
-    container_name: jenkins
+    container_name: ${CONTAINER_NAME}
     environment:
       TZ: "Asia/Seoul"
       DOCKER_GID: 65536
