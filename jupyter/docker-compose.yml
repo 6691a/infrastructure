@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  jupyter:
+    image: jupyter/minimal-notebook
+    volumes:
+      - /volume1/jupyter/work:/home/jovyan/work
+      - /volume1/jupyter/ssl:/etc/ssl/notebook
+    container_name: jupyter
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    ports:
+      - 8888:8888
+    restart: always
